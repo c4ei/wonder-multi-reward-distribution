@@ -2,6 +2,13 @@ import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import '@typechain/hardhat';
 import '@nomiclabs/hardhat-ethers';
+import "dotenv/config";  // yarn add --dev dotenv
+
+// const HDWalletProvider = require('@truffle/hdwallet-provider');
+// const provider = new HDWalletProvider({ 
+//   privateKeys:[process.env.PK]
+//   ,providerOrUrl:'https://rpc.c4ei.net'}
+//   )
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -24,6 +31,17 @@ module.exports = {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
+    c4ei: {
+      allowUnlimitedContractSize: true,
+      url: "https://rpc.c4ei.net",
+      accounts: [process.env.PK || ''],
+      chainId: 21004
+    },
+    // ropsten: {
+    //   url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
+    //   accounts: [process.env.ADMIN || ''],
+    //   chainId: 3,
+    // },
   },
   solidity: {
     compilers: [

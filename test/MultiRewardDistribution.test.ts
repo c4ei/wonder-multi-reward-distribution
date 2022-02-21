@@ -60,7 +60,7 @@ describe("MultiRewardDistribution", function() {
 
         it("should check for staking token", async function () {
             const action = MultiRewardDistribution.addReward(StakingToken.address);
-            await expect(action).to.revertedWith('ANA');
+            await expect(action).to.revertedWith('C4EI');
         });
     });
 

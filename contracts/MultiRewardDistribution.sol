@@ -385,7 +385,7 @@ contract MultiRewardDistribution is IMultiRewardDistribution, Ownable {
     
     /* ========== INTERNAL ========== */
     function _updateReward(address account) internal {
-        require(account != address(this) && account != address(0), "ANA");
+        require(account != address(this) && account != address(0), "C4EI");
         uint256 balance = balances[account];
         uint256 length = rewardTokens.length;
         for (uint i = 0; i < length; i++) {
@@ -517,7 +517,7 @@ contract MultiRewardDistribution is IMultiRewardDistribution, Ownable {
 
     // Add a new reward token to be distributed to stakers
     function addReward(address _rewardsToken) external override onlyOwner {
-        require(_rewardsToken != address(stakingToken), "ANA");
+        require(_rewardsToken != address(stakingToken), "C4EI");
         require(rewardData[_rewardsToken].lastUpdateTime == 0);
         rewardTokens.push(_rewardsToken);
         rewardData[_rewardsToken].lastUpdateTime = block.timestamp;
@@ -526,7 +526,7 @@ contract MultiRewardDistribution is IMultiRewardDistribution, Ownable {
 
     function removeReward(uint index) external onlyOwner {
         address rewardToken = rewardTokens[index];
-        require(rewardToken != address(0), "ANA");
+        require(rewardToken != address(0), "C4EI");
         require(rewardData[rewardToken].lastUpdateTime != 0 && rewardData[rewardToken].rewardRate == 0, "TIW");
         rewardTokens[index] = rewardTokens[rewardTokens.length-1];
         rewardTokens.pop();
